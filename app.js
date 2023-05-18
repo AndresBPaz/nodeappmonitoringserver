@@ -1,5 +1,12 @@
 const { exec } = require('child_process');
 const nodemailer = require('nodemailer');
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hola Mundo');
+  });
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -7,25 +14,29 @@ const transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     user: 'desarrollo@sipcommbsas.com',
-    pass: ''
+    pass: 'yexjkbltayxgijjm'
   }
 });
 
 const email_to = [
     "andabopa@gmail.com",
-    "dbarreto@sipcommbsas.com",
+    //"dbarreto@sipcommbsas.com",
     "desarrollo@sipcommbsas.com"
 ]
 
 const servers = [
-    "xxx.xxx.xxx.xxx",
-    "xxx.xxx.xxx.xxx",
+    "200.7.98.61",
+    //"200.7.102.181",
+    "200.7.102.131",
 ]
 
+server.listen("80", "localhost", () => {
+    console.log(`El servidor se está ejecutando en http://localhost:80/`);
+  });
+
 setInterval(() => {
-    console.log("Starting monitor")
     servers.forEach(i => {
-        console.log("ping to " + i);
+       // console.log("ping to " + i);
         const mailOptions = {
             from: '"Server Monitoring" <desarrollo@sipcommbsas.com>',
             to: email_to.join(","),
@@ -45,4 +56,4 @@ setInterval(() => {
             }
         });
     });
-}, 3600 * 1000);
+},  3600 * 1000);

@@ -1,5 +1,5 @@
 {
-  "name": "nodeappmonitoringservers",
+  "name": "nodeappmonitoringserver",
   "version": "0.1.0",
   "description": "Demo para monitorear servidores mediante ping",
   "main": "app.js",
@@ -10,6 +10,6 @@
       "nodemailer": "^6.9.1"
   },
   "repository": {
-    "url": "https://github.dev/AndresBPaz/nodeappmonitoringservers"
+    "url": "https://github.com/AndresBPaz/nodeappmonitoringserver"
   }
 }
